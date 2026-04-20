@@ -48,11 +48,11 @@ function updateSlider() {
   // Move the track left based on currentIndex
   var offset = currentIndex * -100;
   // Use translateX() to move the track left by offset percent
-  ;
+  track.style.transfrom = "translateX(" + offset + "%)";
 
   // Update active dot
   dots.forEach(function(dot) {
-    ;
+   dots[currentIndex].classList.add("active");
   });
 
   // Add the "active" class to the current slide dot
@@ -66,7 +66,7 @@ function updateSlider() {
 nextButton.addEventListener("click", function() {
 
   if (currentIndex < totalSlides - 1) {
-    ;
+    currentIndex++;
   } else if (infinite) {
     currentIndex = 0;
   }
@@ -77,7 +77,7 @@ nextButton.addEventListener("click", function() {
 prevButton.addEventListener("click", function() {
 
   if (currentIndex > 0) {
-    ;
+    currentIndex--;
   } else if (infinite) {
     currentIndex = totalSlides - 1;
   }
@@ -94,7 +94,7 @@ dots.forEach(function(dot) {
   dot.addEventListener("click", function() {
 
     var index = parseInt(this.getAttribute("data-index"));
-     ;
+     currentIndex = index;
 
     updateSlider();
   });
@@ -109,7 +109,7 @@ function startAutoplay() {
   autoInterval = setInterval(function() {
 
     if (currentIndex < totalSlides - 1) {
-      ;
+      currentIndex++;
     } else if (infinite) {
       currentIndex = 0;
     }
